@@ -20,6 +20,12 @@ const PlayerList = () => {
     GetAllPlayers();
   }, []);
 
+  const capitalizeFirst = (str: any) => {
+    if (!str) return "";
+    str = str.toLowerCase();
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
 
   const GetAllPlayers = async () => {
     setPlayers([]);
@@ -141,28 +147,28 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-      <div className="absolute bottom-[40%] left-[40%] text-left text-white font-bold text-[80%]">
+      <div className="absolute bottom-[40%] left-[40%] text-left text-white font-bold text-[78%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[36%] left-[40%] text-left text-white font-bold text-[80%]">
+      <div className="absolute bottom-[36%] left-[40%] text-left text-white font-bold text-[78%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[32%] left-[40%] text-left text-white font-bold text-[80%]">
+      <div className="absolute bottom-[32%] left-[40%] text-left text-white font-bold text-[78%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[28%] left-[40%] text-left text-white font-bold text-[80%]">
-        {player.location}
+      <div className="absolute bottom-[28%] left-[40%] text-left text-white font-bold text-[78%]">
+        {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[24%] left-[40%] text-left text-white font-bold text-[80%]">
+      <div className="absolute bottom-[24%] left-[40%] text-left text-white font-bold text-[78%]">
         {player.contact_no}
       </div>
 
        <div className="absolute bottom-[6%] left-[40%] text-center text-white font-bold text-lg">
-        {player.fullname}
+        {player.fullname.toUpperCase()}
       </div>
 
 
