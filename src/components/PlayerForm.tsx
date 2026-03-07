@@ -26,6 +26,7 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
   const navigate = useNavigate();
   const { addPlayer, updatePlayer } = usePlayer();
   const fileInputRef = useRef<HTMLInputElement>(null);
+   const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     fullname: '',
@@ -168,17 +169,19 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
 
 
   const savePlayer =()=>{
+    setIsLoading(true);
     formData.profile_image = formData.fullname + "_" + formData.contact_no + ".jpeg";
     PlayerService().addPlayer(formData).then((response:any)=>{
         console.log("response== ", response);
         if(response.data){
           toast.success('Player Registered Succesfully')
            addPlayer(formData);
-             navigate('/');
+             navigate('/players');
           playerImageUpload(response.data.id);
         }else{
           toast.error('Registration Failed')
         }
+        
       }).catch((err:any)=>{
         console.log("err========= ", err)
         if(err.response && err.response.data && err.response.data.name && err.response.data.name === "SequelizeUniqueConstraintError" ){
@@ -186,6 +189,7 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
         }else{
           toast.error('Unable to process your request. Pls try again later')
         }
+        setIsLoading(false);
       })
   }
 
@@ -197,15 +201,13 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
       formFileData.append('file_name', formData.fullname + "_" + formData.contact_no + ".jpeg",)
       formFileData.append('player_id', playerId)
       formFileData.append('file', selectedImage)
-
     await PlayerService().PlayerImageGoogleStorageCloudUpload(formFileData);
-
-
-
-    
+    setIsLoading(false);
   };
 }catch(err){
   console.log("Error while image upload")
+  toast.error('Image upload failed. Please contact your admin')
+  setIsLoading(false);
 }
 
 
@@ -391,6 +393,7 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
 
         {/* Submit Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4">
+          {!isLoading ? (
           <Button
             type="submit"
             className="flex-1 h-11 sm:h-12 text-sm sm:text-base font-semibold gradient-pitch hover:opacity-90 transition-opacity"
@@ -398,6 +401,11 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
             <Save className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             {editPlayer ? 'Update Player' : 'Register Player'}
           </Button>
+          ):(
+            <div className="flex justify-center ">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+          )}
           {onCancel && (
             <Button
               type="button"

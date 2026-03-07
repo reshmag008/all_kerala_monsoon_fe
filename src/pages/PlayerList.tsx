@@ -23,7 +23,7 @@ const PlayerList = () => {
 
   const GetAllPlayers = async () => {
     setPlayers([]);
-        // setIsLoading(true);
+        setIsLoading(true);
         try {
             let teamId = null;
             console.log("teamId==GetAllPlayers ",teamId)
@@ -40,7 +40,7 @@ const PlayerList = () => {
                 setSoldCount(response?.data?.soldPlayerCount);
                 setUnSoldCount(response?.data?.unSoldPlayerCount);
                 setPendingCount(response?.data?.pendingPlayerCount);
-
+                setIsLoading(false);
             })
         } catch (error) {
             setIsLoading(false);
@@ -74,7 +74,22 @@ const PlayerList = () => {
 
       {/* Player Grid */}
       <section className="container mx-auto px-4 py-6 sm:py-10">
-        {players && players.length === 0 ? (
+
+        {isLoading && (
+          <div className="flex flex-col items-center justify-center py-12 sm:py-20 text-center animate-fade-in">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-muted flex items-center justify-center mb-4 sm:mb-6">
+              <Users className="w-10 h-10 sm:w-12 sm:h-12 text-muted-foreground/50" />
+            </div>
+            <h2 className="font-heading font-bold text-xl sm:text-2xl text-foreground mb-2">
+              Loading Registered Players...
+            </h2>
+            <div className="flex justify-center ">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+          </div>
+        )}
+
+        {!isLoading && players && players.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 sm:py-20 text-center animate-fade-in">
             <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-muted flex items-center justify-center mb-4 sm:mb-6">
               <Users className="w-10 h-10 sm:w-12 sm:h-12 text-muted-foreground/50" />
@@ -93,63 +108,67 @@ const PlayerList = () => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-            {players && players.map((player) => (
-              <PlayerCard key={player.id} player={player} />
-            ))}
-          </div>
+          // <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+          //   {players && players.map((player) => (
+          //     <PlayerCard key={player.id} player={player} />
+          //   ))}
+          // </div>
 
-//       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-//   {players && players.map((player) => (
-//     <div key={player.id} className="relative group">
+
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+
+        
+
+  {players && players.map((player) => (
+    <div key={player.id} className="relative group">
       
-//       <img
-//         src={playerCardImg}
-//         alt={player.fullname}
-//         className="w-full h-full object-cover"
-//       />
+      <img
+        src={playerCardImg}
+        alt={'img'}
+        className="w-full h-full object-cover"
+      />
 
 
-//       <div className="absolute bottom-[73px] left-[61%] text-left text-white font-bold text-lg">
-//         <img
-//               src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
-//               alt={player.fullname}
-//               className="w-[89px] h-[110px] object-cover rounded-[15px]"
-//             />
-//       </div>
+      <div className="absolute bottom-[19%] left-[61%] text-left text-white font-bold text-lg">
+        <img
+              src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
+              alt={'img'}
+              className="w-[80%] h-[90%] object-cover rounded-[15px]"
+            />
+      </div>
 
-//       <div className="absolute bottom-[185px] left-[50%] text-left text-white font-bold text-lg">
-//         {player.fullname}
-//       </div>
+      <div className="absolute bottom-[55%] left-[51%] text-left text-white font-bold text-lg">
+        {player.fullname}
+      </div>
 
-//       <div className="absolute bottom-[185px] left-[15%] text-left text-white font-bold text-[20px]">
-//         {player.id}
-//       </div>
+      <div className="absolute bottom-[55%] left-[16%] text-left text-white font-bold text-[20px]">
+        {player.id}
+      </div>
 
-//       <div className="absolute bottom-[148px] left-[40%] text-left text-white font-bold text-[7.5px]">
-//         {player.player_role}
-//       </div>
+      <div className="absolute bottom-[40%] left-[40%] text-left text-white font-bold text-[80%]">
+        {player.player_role}
+      </div>
 
-//       <div className="absolute bottom-[135px] left-[40%] text-left text-white font-bold text-[7px]">
-//         {player.batting_style}
-//       </div>
+      <div className="absolute bottom-[36%] left-[40%] text-left text-white font-bold text-[80%]">
+        {player.batting_style}
+      </div>
 
-//       <div className="absolute bottom-[120px] left-[40%] text-left text-white font-bold text-[7px]">
-//         {player.bowling_style}
-//       </div>
+      <div className="absolute bottom-[32%] left-[40%] text-left text-white font-bold text-[80%]">
+        {player.bowling_style}
+      </div>
 
-//       <div className="absolute bottom-[105px] left-[40%] text-left text-white font-bold text-[7px]">
-//         {player.location}
-//       </div>
+      <div className="absolute bottom-[28%] left-[40%] text-left text-white font-bold text-[80%]">
+        {player.location}
+      </div>
 
-//       <div className="absolute bottom-[90px] left-[40%] text-left text-white font-bold text-[7px]">
-//         {player.contact_no}
-//       </div>
+      <div className="absolute bottom-[24%] left-[40%] text-left text-white font-bold text-[80%]">
+        {player.contact_no}
+      </div>
 
 
-//     </div>
-//   ))}
-// </div>
+    </div>
+  ))}
+</div>
 
         )}
       </section>
