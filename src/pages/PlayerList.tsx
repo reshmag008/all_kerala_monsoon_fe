@@ -10,7 +10,7 @@ import playerCardImg from '../assets/playerCard.jpeg'
 
 const PlayerList = () => {
   const { players, setPlayers } = usePlayer();
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
     const [soldCount, setSoldCount] = useState(0);
     const [unSoldCount, setUnSoldCount] = useState(0);
     const [pendingCount, setPendingCount] = useState(0);
@@ -137,10 +137,6 @@ const PlayerList = () => {
             />
       </div>
 
-      <div className="absolute bottom-[55%] left-[51%] text-left text-white font-bold text-lg">
-        {player.fullname}
-      </div>
-
       <div className="absolute bottom-[55%] left-[16%] text-left text-white font-bold text-[20px]">
         {player.id}
       </div>
@@ -163,6 +159,10 @@ const PlayerList = () => {
 
       <div className="absolute bottom-[24%] left-[40%] text-left text-white font-bold text-[80%]">
         {player.contact_no}
+      </div>
+
+       <div className="absolute bottom-[6%] left-[40%] text-center text-white font-bold text-lg">
+        {player.fullname}
       </div>
 
 
