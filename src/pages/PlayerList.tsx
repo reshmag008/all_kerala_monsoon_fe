@@ -135,11 +135,11 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute bottom-[19%] left-[61%] text-left text-white font-bold text-lg">
+      <div className="absolute top-[17%] left-[53%] text-left text-white font-bold text-lg">
         <img
               src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
               alt={'img'}
-              className="w-[80%] h-[90%] object-cover rounded-[15px]"
+              className="w-[75%] h-[70%] object-cover rounded-[15px]"
             />
       </div>
 
@@ -147,27 +147,27 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-      <div className="absolute bottom-[40%] left-[40%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[38%] left-[50%] text-left text-white font-bold text-[78%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[36%] left-[40%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[33.6%] left-[50%] text-left text-white font-bold text-[78%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[32%] left-[40%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[29%] left-[50%] text-left text-white font-bold text-[78%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[28%] left-[40%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[25%] left-[50%] text-left text-white font-bold text-[78%]">
         {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[24%] left-[40%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[21%] left-[50%] text-left text-white font-bold text-[78%]">
         {player.contact_no}
       </div>
 
-       <div className="absolute bottom-[6%] left-[40%] text-center text-white font-bold text-lg">
+       <div className="absolute bottom-[6%] left-[50%] text-center text-white font-bold text-lg">
         {player.fullname.toUpperCase()}
       </div>
 
