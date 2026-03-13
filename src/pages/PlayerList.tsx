@@ -135,39 +135,39 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute top-[17%] left-[53%] text-left text-white font-bold text-lg">
+      <div className="absolute top-[17.5%] left-[52.8%] text-left text-white font-bold text-lg">
         <img
-              src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
-              alt={'img'}
-              className="w-[75%] h-[70%] object-cover rounded-[15px]"
-            />
+          src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
+          alt="img"
+          className="w-[74.5%] aspect-[1/1.19] object-cover rounded-[15%]"
+        />
       </div>
 
       <div className="absolute bottom-[55%] left-[16%] text-left text-white font-bold text-[20px]">
         {player.id}
       </div>
 
-      <div className="absolute bottom-[38%] left-[50%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[38.5%] left-[50%] text-left text-white font-bold text-[85%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[33.6%] left-[50%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[34.4%] left-[50%] text-left text-white font-bold text-[85%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[29%] left-[50%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[29.5%] left-[50%] text-left text-white font-bold text-[85%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[25%] left-[50%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[25.5%] left-[50%] text-left text-white font-bold text-[85%]">
         {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[21%] left-[50%] text-left text-white font-bold text-[78%]">
+      <div className="absolute bottom-[21%] left-[50%] text-left text-white font-bold text-[85%]">
         {player.contact_no}
       </div>
 
-       <div className="absolute bottom-[6%] left-[50%] text-center text-white font-bold text-lg">
+       <div className="absolute bottom-[6%] left-[45%] text-center text-white font-bold text-lg">
         {player.fullname.toUpperCase()}
       </div>
 
