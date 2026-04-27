@@ -147,27 +147,27 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-      <div className="absolute bottom-[26%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[27%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[22%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[23%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[18%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[19%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[14%] left-[73%] text-left text-[#006A50] font-bold text-[65%]">
+      <div className="absolute bottom-[15%] left-[73%] text-left text-[#006A50] font-bold text-[65%]">
         {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[10%] left-[60%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[11%] left-[60%] text-left text-[#006A50] font-bold text-[70%]">
         {player.contact_no}
       </div>
 
-       <div className="absolute bottom-[4%] left-[62%] text-center text-white font-bold text-[80%]">
+       <div className="absolute bottom-[5%] left-[60%] text-center text-white font-bold text-[90%]">
         {player.fullname.toUpperCase()}
       </div>
 
