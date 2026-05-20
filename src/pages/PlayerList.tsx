@@ -62,7 +62,7 @@ const PlayerList = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
             <div className="text-center sm:text-left">
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2">
-                All Kerala Nileswar Premier League - Player Roster
+               Monsoon Premier League - Player Roster
               </h1>
               <p className="text-primary-foreground/80 text-sm sm:text-lg">
                 {players ? players.length : 0} {players &&players.length === 1 ? 'player' : 'players'} registered for auction
@@ -135,40 +135,45 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute bottom-[8%] left-[6.5%] text-left text-white font-bold text-lg">
+      <div className="absolute top-[36%] left-[8%] text-left text-white font-bold text-lg">
         <img
           src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
           alt="img"
-          className="w-[36%] aspect-[1/1.1] object-cover rounded-[7%]"
+          className="w-[40%] aspect-[1/1.4] object-cover rounded-[4%]"
         />
       </div>
 
-      <div className="absolute bottom-[40%] left-[50%] text-left text-white font-bold text-[20px]">
-        {player.id}
+       <div className="absolute top-[63%] left-[48%] w-[52%] text-center text-black font-bold text-[90%] rotate-[27deg]">
+        {player.fullname.toUpperCase()}
       </div>
 
-      <div className="absolute bottom-[27%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+       <div className="absolute top-[69%] left-[55%] text-left text-black font-bold text-[90%] rotate-[27deg]">
+        {player.contact_no}
+      </div>
+      
+
+      <div className="absolute bottom-[19%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[23%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[14%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[19%] left-[73%] text-left text-[#006A50] font-bold text-[70%]">
+      <div className="absolute bottom-[9%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[15%] left-[73%] text-left text-[#006A50] font-bold text-[65%]">
+      <div className="absolute bottom-[4%] left-[45%] text-left text-white font-bold text-[90%]">
         {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[11%] left-[60%] text-left text-[#006A50] font-bold text-[70%]">
-        {player.contact_no}
-      </div>
+     
 
-       <div className="absolute bottom-[5%] left-[60%] text-center text-white font-bold text-[90%]">
-        {player.fullname.toUpperCase()}
+      
+
+      <div className="absolute bottom-[7%] right-[12%] w-[13%] text-center text-white font-bold text-[20px]">
+        {player.id}
       </div>
 
 
