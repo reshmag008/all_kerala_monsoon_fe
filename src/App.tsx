@@ -23,7 +23,7 @@ const App = () => (
             <Header />
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/register" element={<PlayerList />} />
+              <Route path="/register" element={<PlayerRegister />} />
               <Route path="/players" element={<PlayerList />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

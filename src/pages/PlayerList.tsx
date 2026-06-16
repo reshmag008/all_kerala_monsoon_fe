@@ -135,7 +135,7 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute top-[36%] left-[8%] text-left text-white font-bold text-lg">
+      <div className="absolute top-[29%] left-[8%] text-left text-white font-bold text-lg">
         <img
           src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
           alt="img"
@@ -143,24 +143,24 @@ const PlayerList = () => {
         />
       </div>
 
-       <div className="absolute top-[63%] left-[48%] w-[52%] text-center text-black font-bold text-[90%] rotate-[27deg]">
+       <div className="absolute top-[59%] left-[48%] w-[52%] text-center text-black font-bold text-[90%] rotate-[27deg]">
         {player.fullname.toUpperCase()}
       </div>
 
-       <div className="absolute top-[69%] left-[55%] text-left text-black font-bold text-[90%] rotate-[27deg]">
+       <div className="absolute top-[65%] left-[55%] text-left text-black font-bold text-[90%] rotate-[27deg]">
         {player.contact_no}
       </div>
       
 
-      <div className="absolute bottom-[19%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[21%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[14%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[16%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[9%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[10%] left-[45%] text-left text-white font-bold text-[90%]">
         {player.bowling_style}
       </div>
 
