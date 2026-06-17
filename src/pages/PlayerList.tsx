@@ -144,13 +144,13 @@ const PlayerList = () => {
         />
       </div>
 
-      <div className="absolute top-[21%] left-[75%] text-left ">
+      {/* <div className="absolute top-[21%] left-[75%] text-left ">
        <img
         src={pcllogo}
         alt={'img'}
         className="w-[70%] h-[70%] object-cover rounded-[4%]"
       />
-      </div>
+      </div> */}
 
       <div className="absolute top-[40%] right-[12%] w-[13%] text-center text-white font-bold text-[20px]">
         {player.id}
