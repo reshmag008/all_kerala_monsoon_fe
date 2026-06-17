@@ -6,6 +6,7 @@ import { usePlayer } from '@/context/PlayerContext';
 import { useEffect, useState } from 'react';
 import PlayerService from '@/service/PlayerService';
 import playerCardImg from '../assets/playerCard.jpeg'
+import pcllogo from '../assets/pcllogo.png'
 
 
 const PlayerList = () => {
@@ -135,46 +136,56 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute top-[29%] left-[8%] text-left text-white font-bold text-lg">
+      <div className="absolute top-[54%] left-[62.5%] text-right text-white font-bold text-lg">
         <img
           src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
           alt="img"
-          className="w-[40%] aspect-[1/1.4] object-cover rounded-[4%]"
+          className="w-[82.9%] aspect-[1/1.35] object-cover rounded-[4%]"
         />
       </div>
 
-       <div className="absolute top-[59%] left-[48%] w-[52%] text-center text-black font-bold text-[90%] rotate-[27deg]">
+      <div className="absolute top-[21%] left-[75%] text-left ">
+       <img
+        src={pcllogo}
+        alt={'img'}
+        className="w-[70%] h-[70%] object-cover rounded-[4%]"
+      />
+      </div>
+
+      <div className="absolute top-[40%] right-[12%] w-[13%] text-center text-white font-bold text-[20px]">
+        {player.id}
+      </div>
+
+       <div className="absolute top-[57%] left-[2%] w-[52%] text-center text-black font-bold text-[90%] ">
         {player.fullname.toUpperCase()}
       </div>
 
-       <div className="absolute top-[65%] left-[55%] text-left text-black font-bold text-[90%] rotate-[27deg]">
-        {player.contact_no}
-      </div>
-      
 
-      <div className="absolute bottom-[21%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[30%] left-[32%] text-left text-white font-bold text-[90%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[16%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[25%] left-[32%] text-left text-white font-bold text-[90%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[10%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[20%] left-[32%] text-left text-white font-bold text-[90%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[4%] left-[45%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[16%] left-[32%] text-left text-white font-bold text-[90%]">
         {capitalizeFirst(player?.location)}
+      </div>
+
+      <div className="absolute bottom-[12%] left-[32%] text-left text-white font-bold text-[90%] ">
+        {player.contact_no}
       </div>
 
      
 
       
 
-      <div className="absolute bottom-[7%] right-[12%] w-[13%] text-center text-white font-bold text-[20px]">
-        {player.id}
-      </div>
+      
 
 
     </div>
