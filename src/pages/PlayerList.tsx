@@ -136,11 +136,11 @@ const PlayerList = () => {
       />
 
 
-      <div className="absolute top-[54%] left-[62.5%] text-right text-white font-bold text-lg">
+      <div className="absolute top-[37%] left-[6%] text-right text-white font-bold text-lg">
         <img
           src={`https://storage.googleapis.com/rajas_pl/${player.profile_image}`}
           alt="img"
-          className="w-[82.9%] aspect-[1/1.35] object-cover rounded-[4%]"
+          className="w-[35%] aspect-[1/1.45] object-cover rounded-[4%]"
         />
       </div>
 
@@ -152,32 +152,32 @@ const PlayerList = () => {
       />
       </div> */}
 
-      <div className="absolute top-[40%] right-[12%] w-[13%] text-center text-white font-bold text-[20px]">
+      <div className="absolute top-[4%] left-[6%] w-[13%] text-left text-green font-bold text-[35px]">
         {player.id}
       </div>
 
-       <div className="absolute top-[57%] left-[2%] w-[52%] text-center text-black font-bold text-[90%] ">
+       <div className="absolute bottom-[4%] left-[5%] w-[40%] text-center text-white font-bold text-[90%] ">
         {player.fullname.toUpperCase()}
       </div>
 
 
-      <div className="absolute bottom-[30%] left-[32%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[20%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[25%] left-[32%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[17%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.batting_style}
       </div>
 
-      <div className="absolute bottom-[20%] left-[32%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[14%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.bowling_style}
       </div>
 
-      <div className="absolute bottom-[16%] left-[32%] text-left text-white font-bold text-[90%]">
+      <div className="absolute bottom-[11%] left-[52%] text-left text-black font-bold text-[90%]">
         {capitalizeFirst(player?.location)}
       </div>
 
-      <div className="absolute bottom-[12%] left-[32%] text-left text-white font-bold text-[90%] ">
+      <div className="absolute bottom-[8%] left-[52%] text-left text-black font-bold text-[90%] ">
         {player.contact_no}
       </div>
 
