@@ -156,16 +156,16 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-       <div className="absolute bottom-[4%] left-[5%] w-[40%] text-center text-white font-bold text-[90%] ">
+       <div className="absolute bottom-[4%] left-[7%] w-[40%] text-left text-white font-bold text-[90%] ">
         {player.fullname.toUpperCase()}
       </div>
 
 
-      <div className="absolute bottom-[20%] left-[52%] text-left text-black font-bold text-[90%]">
+      <div className="absolute bottom-[20.5%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.player_role}
       </div>
 
-      <div className="absolute bottom-[17%] left-[52%] text-left text-black font-bold text-[90%]">
+      <div className="absolute bottom-[17.5%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.batting_style}
       </div>
 
