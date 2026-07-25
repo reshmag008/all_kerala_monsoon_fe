@@ -6,20 +6,45 @@ import { usePlayer } from '@/context/PlayerContext';
 import { useEffect, useState } from 'react';
 import PlayerService from '@/service/PlayerService';
 import playerCardImg from '../assets/playerCard.jpeg'
-import pcllogo from '../assets/pcllogo.png'
+import soldPng from '../assets/sold.png'
+import PDFCreator from './PDFCreator';
+import TeamService from '@/service/TeamService';
 
 
 const PlayerList = () => {
-  const { players, setPlayers } = usePlayer();
+    const { players, setPlayers } = usePlayer();
   const [isLoading, setIsLoading] = useState(true)
     const [soldCount, setSoldCount] = useState(0);
     const [unSoldCount, setUnSoldCount] = useState(0);
     const [pendingCount, setPendingCount] = useState(0);
+    const [selectedTeamName, setSelectedTeamName] = useState('')
+        const [selectedTeamId, setSelectedTeamId] = useState('')
+
+    const [allTeams, setAllTeams] = useState<any>();
+
 
   useEffect(() => {
     
     GetAllPlayers();
+    GetAllTeams();
   }, []);
+
+
+    useEffect(() => {
+  if (selectedTeamId) {
+    setSelectedTeamId(selectedTeamId)
+    console.log("Team selected:", selectedTeamId);
+    GetAllPlayers();
+  }
+}, [selectedTeamId]);
+
+  const GetAllTeams = () =>{
+        TeamService().getAllTeams().then((response:any)=>{
+            setAllTeams(response?.data)
+        })
+    }
+
+
 
   const capitalizeFirst = (str: any) => {
     if (!str) return "";
@@ -55,6 +80,19 @@ const PlayerList = () => {
         }
     };
 
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) =>{
+        console.log("selectedItem-- ", event.target.value);
+        setSelectedTeamId(event.target.value);
+        allTeams.forEach((element:any) => {
+            if(element.id ==  event.target.value){
+                console.log("elem== ", element.team_name)
+            setSelectedTeamName(element.team_name)
+            }
+        });
+    }
+
+
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -76,6 +114,55 @@ const PlayerList = () => {
               </Button>
             </Link> 
           </div>
+
+          
+          <div className="flex flex-col sm:flex-row items-center sm:gap-6">
+
+            {allTeams && allTeams.length>0 && (
+                <select
+              value={selectedTeamId}
+              onChange={handleChange}
+              className="
+                w-full
+                md:w-64
+                px-4
+                py-2
+                rounded-lg
+                gradient-hero
+                text-white
+                font-semibold
+                border
+                border-white/20
+                shadow-lg
+                focus:outline-none
+                focus:ring-2
+                focus:ring-white/50
+                cursor-pointer
+              "
+            >
+              <option value="" className="text-black bg-white">
+                -- Select Team --
+              </option>
+
+              {allTeams?.map((team: any) => (
+                <option
+                  key={team.id}
+                  value={team.id}
+                  className="text-black bg-white"
+                >
+                  {team.team_name}
+                </option>
+              ))}
+            </select>
+
+            )}
+
+
+                  <PDFCreator playerList={players} teamName={selectedTeamName}/>
+
+      </div>
+
+
         </div>
       </section>
 
@@ -156,9 +243,24 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-       <div className="absolute bottom-[4%] left-[7%] w-[40%] text-left text-white font-bold text-[90%] ">
-        {player.fullname.toUpperCase()}
-      </div>
+       <div
+  className="absolute top-[20%] left-[30%] w-[50%] text-center font-bold text-[150%]"
+  style={{
+    color: "#D10000",
+    textShadow: `
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000,
+      -2px  0px 0 #000,
+       2px  0px 0 #000,
+       0px -2px 0 #000,
+       0px  2px 0 #000
+    `,
+  }}
+>
+  {player.fullname.toUpperCase()}
+</div>
 
 
       <div className="absolute bottom-[20.5%] left-[52%] text-left text-black font-bold text-[90%]">
