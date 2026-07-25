@@ -116,7 +116,7 @@ const PlayerList = () => {
           </div>
 
           
-          <div className="flex flex-col sm:flex-row items-center sm:gap-6">
+          {/* <div className="flex flex-col sm:flex-row items-center sm:gap-6">
 
             {allTeams && allTeams.length>0 && (
                 <select
@@ -160,7 +160,7 @@ const PlayerList = () => {
 
                   <PDFCreator playerList={players} teamName={selectedTeamName}/>
 
-      </div>
+      </div> */}
 
 
         </div>
@@ -243,26 +243,6 @@ const PlayerList = () => {
         {player.id}
       </div>
 
-       <div
-  className="absolute top-[20%] left-[30%] w-[50%] text-center font-bold text-[150%]"
-  style={{
-    color: "#D10000",
-    textShadow: `
-      -2px -2px 0 #000,
-       2px -2px 0 #000,
-      -2px  2px 0 #000,
-       2px  2px 0 #000,
-      -2px  0px 0 #000,
-       2px  0px 0 #000,
-       0px -2px 0 #000,
-       0px  2px 0 #000
-    `,
-  }}
->
-  {player.fullname.toUpperCase()}
-</div>
-
-
       <div className="absolute bottom-[20.5%] left-[52%] text-left text-black font-bold text-[90%]">
         {player.player_role}
       </div>
@@ -282,6 +262,11 @@ const PlayerList = () => {
       <div className="absolute bottom-[8%] left-[52%] text-left text-black font-bold text-[90%] ">
         {player.contact_no}
       </div>
+
+      <div
+  className="absolute bottom-[4.2%] left-[7%] w-[50%] text-left font-bold text-[80%] text-white">
+  {player.fullname.toUpperCase()}
+</div>
 
      
 

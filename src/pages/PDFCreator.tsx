@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom/client'; // Import createRoot from React 18
 import { format } from 'path';
 import soldImg from '../assets/sold.png'
 import { Button } from '@/components/ui/button';
+import { Download } from "lucide-react";
 
 
 
@@ -203,9 +204,12 @@ const PDFCreator: React.FC<props> = ({playerList,teamName}) => {
 
 )}
 
-      <Button onClick={generatePDF} className="w-full sm:w-auto h-10 sm:h-12 px-4 sm:px-6 text-sm sm:text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-gold">
-        Generate PDF
-    </Button>
+      <Button
+  onClick={generatePDF}
+  className="w-full sm:w-auto h-10 sm:h-12 px-4 sm:px-6 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-gold flex items-center justify-center"
+>
+  <Download className="h-5 w-5" />
+</Button>
 
 
     </div>

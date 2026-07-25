@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import PlayerRegister from "./pages/PlayerRegister";
 import NotFound from "./pages/NotFound";
 import PlayerList from "./pages/PlayerList";
+import TeamList from "./pages/TeamList";
+import TeamRegistration from "./pages/TeamRegister";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/register" element={<PlayerRegister />} />
               <Route path="/players" element={<PlayerList />} />
+              <Route path="/teams" element={<TeamList />} />
+              <Route path="/team-register" element={<TeamRegistration />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
