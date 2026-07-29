@@ -2,7 +2,19 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PlayerForm from '@/components/PlayerForm';
 
+import { useLocation } from "react-router-dom";
+
+
 const PlayerRegister = () => {
+
+  const location = useLocation();
+
+const player = location.state?.player;
+
+console.log(player);
+
+
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -28,7 +40,7 @@ const PlayerRegister = () => {
       <section className="container mx-auto px-4 py-6 sm:py-10">
         <div className="max-w-2xl mx-auto">
           <div className="bg-card rounded-xl shadow-card p-4 sm:p-6 md:p-8 border border-border">
-            <PlayerForm />
+            <PlayerForm editPlayer={player}/>
           </div>
         </div>
       </section>

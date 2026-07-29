@@ -54,7 +54,7 @@ const PlayerForm = ({ editPlayer, onCancel }: PlayerFormProps) => {
         bowling_style: editPlayer.bowling_style,
         profile_image: editPlayer.profile_image,
       });
-      setImagePreview(editPlayer.profile_image);
+      setImagePreview(`https://storage.googleapis.com/rajas_pl/${editPlayer.profile_image}`);
     }
   }, [editPlayer]);
 

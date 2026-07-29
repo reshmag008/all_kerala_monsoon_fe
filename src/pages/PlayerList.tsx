@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Users, UserPlus, Trophy } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Users, UserPlus, Trophy,Edit, Trash2  } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PlayerCard from '@/components/PlayerCard';
 import { usePlayer } from '@/context/PlayerContext';
@@ -11,7 +11,10 @@ import PDFCreator from './PDFCreator';
 import TeamService from '@/service/TeamService';
 
 
+
 const PlayerList = () => {
+    const navigate = useNavigate();
+
     const { players, setPlayers } = usePlayer();
   const [isLoading, setIsLoading] = useState(true)
     const [soldCount, setSoldCount] = useState(0);
@@ -21,6 +24,7 @@ const PlayerList = () => {
         const [selectedTeamId, setSelectedTeamId] = useState('')
 
     const [allTeams, setAllTeams] = useState<any>();
+    const [isLogin , setIsLogin] = useState(false)
 
 
   useEffect(() => {
@@ -28,6 +32,24 @@ const PlayerList = () => {
     GetAllPlayers();
     GetAllTeams();
   }, []);
+
+
+    useEffect(() => {
+  const handleUserChanged = () => {
+    console.log("isLoggedIn==== ",localStorage.getItem("isLoggedIn"));
+    setIsLogin(localStorage.getItem("isLoggedIn") == "true")
+  };
+
+  handleUserChanged();
+
+  window.addEventListener("storage", handleUserChanged);
+
+  return () => {
+    window.removeEventListener("storage", handleUserChanged);
+  };
+}, []);
+
+
 
 
     useEffect(() => {
@@ -91,6 +113,20 @@ const PlayerList = () => {
         });
     }
 
+    const handleEdit = (player:any)=>{
+
+      navigate("/register", {
+        state: {
+          player
+        },
+      });
+
+    }
+
+     const handleDelete = (player)=>{
+      
+    }
+
 
 
   return (
@@ -107,16 +143,16 @@ const PlayerList = () => {
                 {players ? players.length : 0} {players &&players.length === 1 ? 'player' : 'players'} registered for auction
               </p>
             </div>
-             <Link to="/register" className="w-3/4 sm:w-auto">
+             {/* <Link to="/register" className="w-3/4 sm:w-auto">
               <Button className="w-full sm:w-auto h-10 sm:h-12 px-4 sm:px-6 text-sm sm:text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-gold">
                 <UserPlus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Register New Player
               </Button>
-            </Link> 
+            </Link>  */}
           </div>
 
           
-          {/* <div className="flex flex-col sm:flex-row items-center sm:gap-6">
+          {/*<div className="flex flex-col sm:flex-row items-center sm:gap-6">
 
             {allTeams && allTeams.length>0 && (
                 <select
@@ -160,7 +196,7 @@ const PlayerList = () => {
 
                   <PDFCreator playerList={players} teamName={selectedTeamName}/>
 
-      </div> */}
+      </div>*/}
 
 
         </div>
@@ -194,12 +230,12 @@ const PlayerList = () => {
             <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6 max-w-md px-4">
               Start building your dream team by registering your first player for the auction.
             </p>
-             <Link to="/register">
+             {/* <Link to="/register">
               <Button className="h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base font-semibold gradient-pitch hover:opacity-90">
                 <Trophy className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Register First Player
               </Button>
-            </Link> 
+            </Link>  */}
           </div>
         ) : (
           // <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
@@ -231,14 +267,6 @@ const PlayerList = () => {
         />
       </div>
 
-      {/* <div className="absolute top-[21%] left-[75%] text-left ">
-       <img
-        src={pcllogo}
-        alt={'img'}
-        className="w-[70%] h-[70%] object-cover rounded-[4%]"
-      />
-      </div> */}
-
       <div className="absolute top-[4%] left-[6%] w-[13%] text-left text-green font-bold text-[35px]">
         {player.id}
       </div>
@@ -264,15 +292,29 @@ const PlayerList = () => {
       </div>
 
       <div
-  className="absolute bottom-[4.2%] left-[7%] w-[50%] text-left font-bold text-[80%] text-white">
-  {player.fullname.toUpperCase()}
-</div>
-
-     
+        className="absolute bottom-[4.2%] left-[7%] w-[50%] text-left font-bold text-[80%] text-white">
+        {player.fullname.toUpperCase()}
+      </div>
 
       
+     {/* {isLogin && (
+     <div className="absolute top-3 left-[15%] right-0 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-3 px-4">
+    <button
+      onClick={() => handleEdit(player)}
+      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition-colors"
+    >
+      <Edit className="w-4 h-4" />
+    </button>
 
-      
+    <button
+      onClick={() => handleDelete(player.id)}
+      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition-colors"
+    >
+      <Trash2 className="w-4 h-4" />
+    </button>
+  </div>
+  )} */}
+
 
 
     </div>

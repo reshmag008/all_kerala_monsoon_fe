@@ -1,19 +1,41 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Trophy, Users, UserPlus, Menu, X , Home,Group} from 'lucide-react';
+import { Trophy, Users, UserPlus, Menu, X , Home,Group,LogIn,LogOut} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import bklogo from '../../assets/bk_logo.jpeg'
 
 const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false)
 
   const navItems = [
+    // isLogin
+    // ? { path: "/login", label: "Logout", icon: LogOut }
+    // : { path: "/login", label: "Login", icon: LogIn },
     { path: '/', label: 'Home', icon: Home },
     { path: '/players', label: 'Players', icon: Users },
-    { path: '/register', label: 'Register', icon: UserPlus },
+    // { path: '/register', label: 'Register', icon: UserPlus },
     { path: '/teams', label: 'Teams', icon: Group },
   ];
+
+
+      useEffect(() => {
+    const handleUserChanged = () => {
+      console.log("isLoggedIn==== ",localStorage.getItem("isLoggedIn"));
+     setIsLogin(localStorage.getItem("isLoggedIn") === "true");
+    };
+  
+    handleUserChanged();
+  
+    window.addEventListener("storage", handleUserChanged);
+  
+    return () => {
+      window.removeEventListener("storage", handleUserChanged);
+    };
+  }, []);
+
+
 
   return (
     <header className="gradient-hero text-primary-foreground shadow-lg sticky top-0 z-50">

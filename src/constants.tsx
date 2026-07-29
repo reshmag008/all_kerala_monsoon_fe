@@ -9,3 +9,5 @@ export const buttonColor = "#fc0320"
 export const headerBg = "#00072D"
 
 export const roomId = 'auctionLive';
+
+export const leagueOwnerId = 1;

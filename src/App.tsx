@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import PlayerList from "./pages/PlayerList";
 import TeamList from "./pages/TeamList";
 import TeamRegistration from "./pages/TeamRegister";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/teams" element={<TeamList />} />
               <Route path="/team-register" element={<TeamRegistration />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </BrowserRouter>
