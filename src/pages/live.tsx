@@ -687,14 +687,6 @@ const [socket, setSocket] = useState<any>(null);
             Player
           </th>
 
-          <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[11px] sm:text-sm font-semibold">
-            Role
-          </th>
-
-          <th className="px-2 sm:px-4 py-2 sm:py-3 text-center text-[11px] sm:text-sm font-semibold">
-            ID
-          </th>
-
           <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-[11px] sm:text-sm font-semibold">
             Bid Amount
           </th>
@@ -744,18 +736,11 @@ const [socket, setSocket] = useState<any>(null);
                     "
                     title={player.fullname}
                   >
-                    {player.fullname}
+                    #{player.id}. {player.fullname}
                   </div>
                 </td>
 
-                <td className="px-2 sm:px-4 py-2 sm:py-3 whitespace-nowrap text-xs sm:text-sm md:text-base">
-                  {player.player_role}
-                </td>
-
-                <td className="px-2 sm:px-4 py-2 sm:py-3 text-center whitespace-nowrap text-xs sm:text-sm md:text-base">
-                  {player.id}
-                </td>
-
+                
                 <td className="px-2 sm:px-4 py-2 sm:py-3 text-right whitespace-nowrap font-bold text-yellow-400 text-xs sm:text-sm md:text-base">
                   ₹{player.bid_amount?.toLocaleString()}
                 </td>

@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Trophy, Users, UserPlus, Menu, X , Home,Group,LogIn,LogOut} from 'lucide-react';
+import { Trophy, Users, UserPlus, Menu, X , Home,Group,LogIn,LogOut,Radio} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import bklogo from '../../assets/bk_logo.jpeg'
 
@@ -17,6 +17,7 @@ const Header = () => {
     { path: '/players', label: 'Players', icon: Users },
     // { path: '/register', label: 'Register', icon: UserPlus },
     { path: '/teams', label: 'Teams', icon: Group },
+    { path: '/auction-live', label: 'Live', icon: Radio },
   ];
 
 
