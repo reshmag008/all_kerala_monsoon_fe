@@ -152,7 +152,7 @@ const PlayerList = () => {
           </div>
 
           
-          <div className="flex flex-col sm:flex-row items-center sm:gap-6">
+          {/* <div className="flex flex-col sm:flex-row items-center sm:gap-6">
 
             {allTeams && allTeams.length>0 && (
                 <select
@@ -196,7 +196,7 @@ const PlayerList = () => {
 
                   <PDFCreator playerList={players} teamName={selectedTeamName}/>
 
-      </div>
+      </div> */}
 
 
         </div>
