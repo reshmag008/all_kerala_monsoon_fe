@@ -1,11 +1,13 @@
 import { useState,useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import { Trophy, Users, UserPlus, Menu, X , Home,Group,LogIn,LogOut,Radio} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import bklogo from '../../assets/bk_logo.jpeg'
 
 const Header = () => {
   const location = useLocation();
+      const navigate = useNavigate();
+  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false)
 
@@ -51,10 +53,49 @@ const Header = () => {
           className="w-5 h-5 sm:w-6 sm:h-6 text-secondary-foreground object-cover"
         />
             </div>
+
+
+
             <div>
-              <h1 className="font-heading font-bold text-lg sm:text-xl tracking-tight">BK's Cricket Auction</h1>
-              <p className="text-[10px] sm:text-xs text-primary-foreground/70 font-medium hidden sm:block">Player Management</p>
+
+
+
+              <div className="flex items-center gap-2">
+
+    <h1 className="font-heading font-bold text-lg sm:text-xl tracking-tight">
+      BK's Cricket Auction
+    </h1>
+
+   <Link
+      to="/auction-live"
+      className="
+        flex items-center gap-1
+        rounded-full
+        border border-red-400/40
+        bg-red-500/15
+        px-2 py-0.5
+        text-[9px] sm:text-[10px]
+        font-bold uppercase tracking-wide
+        text-red-400
+        hover:bg-red-500/25
+        hover:border-red-400/70
+        transition-all
+        cursor-pointer
+        no-underline
+      "
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+      LIVE
+    </Link>
+
+  </div>
+
+
             </div>
+
+
+
+
           </Link>
 
           {/* Desktop Navigation */}
