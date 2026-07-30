@@ -79,11 +79,10 @@ const PlayerList = () => {
     setPlayers([]);
         setIsLoading(true);
         try {
-            let teamId = null;
-            console.log("teamId==GetAllPlayers ",teamId)
+            console.log("teamId==GetAllPlayers ",selectedTeamId)
             let params = {
                 offset : 0,
-                teamId : teamId
+                teamId : selectedTeamId
             }
             PlayerService().getAllPlayers(params).then((response:any)=>{
                 setIsLoading(false);
@@ -267,20 +266,35 @@ const PlayerList = () => {
         />
       </div>
 
-      {player.bid_amount && (
-        <>
-      <div className="absolute top-[15%] left-[70%] text-left ">
-       <img
-        src={soldPng}
-        alt={'img'}
-        className="w-[65%] aspect-[1.3/3] object-cover rounded-[4%]"
-      />
-      </div>
-      <div className="absolute top-[32%] left-[73%] w-[13%] text-left text-red font-bold text-[15px]">
-        {player.bid_amount}
-      </div>
-      </>
-      )}
+      {!player.bid_amount && (
+  <div
+    className="
+      absolute top-[20%] right-[4%] z-20
+      flex items-center gap-3
+      rounded-full
+      border border-emerald-400/60
+      bg-slate-950/90
+      px-3 py-1.5
+      shadow-[0_0_15px_rgba(52,211,153,0.3)]
+      backdrop-blur-sm
+    "
+  >
+    {/* SOLD */}
+    <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-black uppercase text-slate-950">
+      SOLD
+    </span>
+
+    {/* Team */}
+    <span className="text-xs font-bold text-white">
+      Team Name
+    </span>
+
+    {/* Bid */}
+    <span className="text-sm font-black text-yellow-400">
+      ₹1,000
+    </span>
+  </div>
+)}
 
 
       <div className="absolute top-[4%] left-[6%] w-[13%] text-left text-green font-bold text-[35px]">

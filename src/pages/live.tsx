@@ -5,7 +5,7 @@ import {
   IndianRupee,
 } from "lucide-react";
 import { io } from "socket.io-client";
-import { BACKEND_URL, TOTAL_PLAYER, roomId } from "../constants";
+import { BACKEND_URL, SOCKET_URL, TOTAL_PLAYER, roomId } from "../constants";
 import bellGif from '../assets/bell.gif';
 import congratsJif from '../assets/congratulations.gif';
 import clapJif from '../assets/clap.gif'
@@ -50,7 +50,7 @@ export default function AuctionDashboard() {
 
 
   useEffect(() => {
-    const newSocket = io(BACKEND_URL, {
+    const newSocket = io(SOCKET_URL, {
       transports: ["websocket"], // 👈 prefer websocket only
       withCredentials: true,
 
@@ -341,10 +341,37 @@ export default function AuctionDashboard() {
       ">
 
 
+  <div
+  className="
+    mt-3
+    flex items-center justify-center
+    rounded-xl
+    border-2 border-cyan-400/40
+    bg-gradient-to-r from-cyan-500/10 via-indigo-500/20 to-violet-500/10
+    px-6 py-3
+    shadow-[0_0_20px_rgba(34,211,238,0.12)]
+  "
+>
+  <div className="flex items-center gap-3">
+
+    <span className="text-xl">🏆</span>
+
+    <div>
+      <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-400">
+        AUCTION
+      </p>
+
+      <p className="text-xl md:text-2xl font-black uppercase text-white leading-none">
+        COMPLETED
+      </p>
+    </div>
+
+  </div>
+</div>
 
         {/* CURRENT PLAYER CARD */}
 
-        {
+        {/* {
           currentBidPlayer &&
           (
 
@@ -381,7 +408,6 @@ export default function AuctionDashboard() {
                 />
 
 
-                {/* Bottom Transparent Overlay */}
 
                 <div className="
       absolute
@@ -516,7 +542,7 @@ export default function AuctionDashboard() {
             </div>
 
           )
-        }
+        } */}
 
 
 
@@ -524,8 +550,7 @@ export default function AuctionDashboard() {
         {/* CURRENT BID */}
 
 
-        {
-          currentCall &&
+        {/* {currentCall &&
           (
 
             <div className="
@@ -553,7 +578,6 @@ export default function AuctionDashboard() {
       sm:gap-6
     "
               >
-                {/* Team */}
 
                 <div className="text-center sm:text-left">
                   <p
@@ -582,7 +606,6 @@ export default function AuctionDashboard() {
                   </h2>
                 </div>
 
-                {/* Amount */}
                 <div
                   className="
         flex
@@ -604,7 +627,7 @@ export default function AuctionDashboard() {
             </div>
 
           )
-        }
+        } */}
 
 
 
