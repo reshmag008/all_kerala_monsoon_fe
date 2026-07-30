@@ -284,10 +284,10 @@ useEffect(() => {
 
         <div className="grid lg:grid-cols-12 gap-6 items-center">
 
-
           {/* ================= PLAYER IMAGE ================= */}
 
           <div className="lg:col-span-5 flex justify-center">
+            
 
             <div className="relative w-full max-w-sm">
 
@@ -297,7 +297,6 @@ useEffect(() => {
                   absolute -inset-2
                   rounded-2xl
                   bg-gradient-to-r
-                  
                   opacity-40
                   blur-xl
                 "
