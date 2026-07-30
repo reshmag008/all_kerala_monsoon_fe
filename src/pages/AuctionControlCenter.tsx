@@ -65,7 +65,6 @@ const AuctionPlayerPage: React.FC = () => {
 
 
     const GetPlayer = () => {
-    // localStorage.setItem("selectedPlayer", JSON.stringify({}));
     localStorage.setItem('close_popup', 'false');
     localStorage.setItem("team_complete",  JSON.stringify({}))
     console.log("searchText== ", searchText);
@@ -84,11 +83,13 @@ const AuctionPlayerPage: React.FC = () => {
           toast.success("No pending players");
           localStorage.setItem("selectedPlayer", JSON.stringify({}));
           localStorage.setItem("team_complete",  JSON.stringify({}))
+          localStorage.setItem("currentBidTeam", JSON.stringify({}));
           localStorage.setItem('close_popup', 'false');
         }
         if (players.length === 1) {
           setCurrentBidPlayer(players[0]);
           localStorage.setItem("selectedPlayer", JSON.stringify(players[0]));
+          localStorage.setItem("currentBidTeam", JSON.stringify({}));
           localStorage.setItem("team_complete",  JSON.stringify({}))
           localStorage.setItem('close_popup', 'false');
           PlayerService().displayPlayer(players[0]).then((response: any) => {
@@ -107,6 +108,7 @@ const AuctionPlayerPage: React.FC = () => {
     console.log(random, players[random]);
     setCurrentBidPlayer(players[random]);
     console.log("currentBidPlayer== ", players[random]);
+    localStorage.setItem("currentBidTeam", JSON.stringify({}));
     localStorage.setItem("selectedPlayer", JSON.stringify(players[random]));
     localStorage.setItem("team_complete",  JSON.stringify({}))
     localStorage.setItem('close_popup', 'false');
@@ -145,7 +147,6 @@ const AuctionPlayerPage: React.FC = () => {
   };
 
   const cardClick = (team: any, index: number) => {
-    // setCurrentBidTeam(team);
     console.log("bidFlow.value== ", bidFlow);
     if (bidFlow.length === 0) {
       let flow = [];
@@ -156,7 +157,9 @@ const AuctionPlayerPage: React.FC = () => {
         setCurrentBidTeam(team);
         console.log("amount== ", amount);
         setBidAmount(amount);
-        flow.push({ id: team.id, team_name: team.team_name, amount: amount });
+        let flowItem = { id: team.id, team_name: team.team_name, amount: amount }
+        flow.push(flowItem);
+        localStorage.setItem("currentBidTeam", JSON.stringify(flowItem));
         console.log("flow== ", flow);
         InvokeTeamCall(flow[flow.length - 1])
         setBidFlow(flow);
@@ -179,14 +182,17 @@ const AuctionPlayerPage: React.FC = () => {
           toast.error('Bid amount larger than max amount')
         } else {
           setCurrentBidTeam(team);
+          
           // socket.emit('current_bid' , {'team_name' :team.team_name, 'points':amount })
           setBidAmount(amount);
           let flow = bidFlow;
-          flow.push({
+          let flowItem = {
             id: team.id,
             team_name: team.team_name,
             amount: amount,
-          });
+          }
+          flow.push(flowItem);
+          localStorage.setItem("currentBidTeam", JSON.stringify(flowItem));
           InvokeTeamCall(flow[flow.length - 1])
           setBidFlow(flow);
           console.log("bidFlow== ", bidFlow);
