@@ -7,6 +7,7 @@ export interface Player {
   batting_style: string;
   bowling_style: string;
   profile_image: string;
+  bid_amount : string
 }
 
 export const playerRoles = [

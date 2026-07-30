@@ -12,6 +12,10 @@ import PlayerList from "./pages/PlayerList";
 import TeamList from "./pages/TeamList";
 import TeamRegistration from "./pages/TeamRegister";
 import Login from "./pages/Login";
+import LiveAuctionPlayerCard from "./pages/Auction";
+import AuctionPlayerPage from "./pages/AuctionControlCenter";
+import PlayerDisplay from "./pages/PlayerDisplay";
+import PlayerAuctionView from "./pages/live";
 
 const queryClient = new QueryClient();
 
@@ -28,10 +32,13 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/register" element={<PlayerRegister />} />
               <Route path="/players" element={<PlayerList />} />
-              <Route path="/teams" element={<TeamList />} />
-              <Route path="/team-register" element={<TeamRegistration />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/auction" element={<LiveAuctionPlayerCard/>} />
+              <Route path="/control-center" element={<AuctionPlayerPage/>} />
+              <Route path="/player-display" element={<PlayerDisplay/>} />
+              <Route path="/team-register" element={<TeamRegistration/>} />
+              <Route path="/teams" element={<TeamList/>} />
+              <Route path="/auction-live" element={<PlayerAuctionView/>} />
             </Routes>
           </div>
         </BrowserRouter>

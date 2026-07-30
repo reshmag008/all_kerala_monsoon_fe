@@ -1,5 +1,5 @@
 export const BACKEND_URL = "https://all-kerala-monsoon-be-204746249106.europe-west1.run.app/" // "http://localhost:8080";  //  "https://my-node-app-204746249106.asia-south1.run.app/" //  ; 
-export const TOTAL_PLAYER = 11
+export const TOTAL_PLAYER = 9
 
 export const SOCKET_URL = "https://all-kerala-monsoon-be-204746249106.europe-west1.run.app/" //   "http://localhost:8080";  "http://localhost:8080";  //  "https://my-node-app-204746249106.asia-south1.run.app/" //  ; 
 

@@ -152,7 +152,7 @@ const PlayerList = () => {
           </div>
 
           
-          {/*<div className="flex flex-col sm:flex-row items-center sm:gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:gap-6">
 
             {allTeams && allTeams.length>0 && (
                 <select
@@ -196,7 +196,7 @@ const PlayerList = () => {
 
                   <PDFCreator playerList={players} teamName={selectedTeamName}/>
 
-      </div>*/}
+      </div>
 
 
         </div>
@@ -266,6 +266,22 @@ const PlayerList = () => {
           className="w-[35%] aspect-[1/1.45] object-cover rounded-[4%]"
         />
       </div>
+
+      {player.bid_amount && (
+        <>
+      <div className="absolute top-[15%] left-[70%] text-left ">
+       <img
+        src={soldPng}
+        alt={'img'}
+        className="w-[65%] aspect-[1.3/3] object-cover rounded-[4%]"
+      />
+      </div>
+      <div className="absolute top-[32%] left-[73%] w-[13%] text-left text-red font-bold text-[15px]">
+        {player.bid_amount}
+      </div>
+      </>
+      )}
+
 
       <div className="absolute top-[4%] left-[6%] w-[13%] text-left text-green font-bold text-[35px]">
         {player.id}
