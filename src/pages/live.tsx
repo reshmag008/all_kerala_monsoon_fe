@@ -704,88 +704,84 @@ export default function AuctionDashboard() {
                 </button>
 
                 {/* Expanded Players */}
-                {expanded && (
-                  <div className="overflow-x-auto rounded-xl border border-slate-700">
-                    <table className="w-full min-w-[500px] sm:min-w-[650px] border-collapse">
-                      <thead className="sticky top-0 bg-slate-800 z-10">
-                        <tr className="text-slate-300 uppercase">
-                          <th className="px-2 sm:px-4 py-2 sm:py-3 text-left text-[11px] sm:text-sm font-semibold">
-                            Player
-                          </th>
+               {expanded && (
+  <div className="w-full overflow-x-hidden rounded-xl border border-slate-700">
 
-                          <th className="px-2 sm:px-4 py-2 sm:py-3 text-right text-[11px] sm:text-sm font-semibold">
-                            Bid Amount
-                          </th>
-                        </tr>
-                      </thead>
+    <table className="w-full table-fixed border-collapse">
 
-                      <tbody>
-                        {isLoading ? (
-                          <tr>
-                            <td colSpan={4} className="py-8">
-                              <div className="flex justify-center items-center">
-                                <Loader
-                                  type="spinner-cub"
-                                  bgColor="gold"
-                                  color="gold"
-                                  title="Loading..."
-                                  size={40}
-                                />
-                              </div>
-                            </td>
-                          </tr>
-                        ) : (playersByTeam[String(team.id)] || []).length > 0 ? (
-                          (playersByTeam[String(team.id)] || []).map(
-                            (player: any, index: number) => (
-                              <tr
-                                key={player.id}
-                                className={`
-                  ${index % 2 === 0
-                                    ? "bg-slate-900"
-                                    : "bg-slate-800/70"
-                                  }
-                  hover:bg-slate-700
-                  transition-colors
-                `}
-                              >
-                                <td className="px-2 sm:px-4 py-2 sm:py-3">
-                                  <div
-                                    className="
-                      max-w-[140px]
-                      sm:max-w-xs
-                      truncate
-                      font-semibold
-                      text-xs
-                      sm:text-sm
-                      md:text-base
-                    "
-                                    title={player.fullname}
-                                  >
-                                    #{player.id}. {player.fullname}
-                                  </div>
-                                </td>
+      <thead className="sticky top-0 z-10 bg-slate-800">
+        <tr className="text-slate-300 uppercase">
 
+          <th className="w-[65%] px-2 sm:px-3 py-2 text-left text-[11px] sm:text-sm font-semibold">
+            Player
+          </th>
 
-                                <td className="px-2 sm:px-4 py-2 sm:py-3 text-right whitespace-nowrap font-bold text-yellow-400 text-xs sm:text-sm md:text-base">
-                                  ₹{player.bid_amount?.toLocaleString()}
-                                </td>
-                              </tr>
-                            )
-                          )
-                        ) : (
-                          <tr>
-                            <td
-                              colSpan={4}
-                              className="py-6 text-center text-slate-400 text-sm"
-                            >
-                              No players available
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
+          <th className="w-[35%] px-2 sm:px-3 py-2 text-right text-[11px] sm:text-sm font-semibold">
+            Bid Amount
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        {isLoading ? (
+          <tr>
+            <td colSpan={2} className="py-8">
+              <div className="flex justify-center items-center">
+                <Loader
+                  type="spinner-cub"
+                  bgColor="gold"
+                  color="gold"
+                  title="Loading..."
+                  size={40}
+                />
+              </div>
+            </td>
+          </tr>
+        ) : (playersByTeam[String(team.id)] || []).length > 0 ? (
+          (playersByTeam[String(team.id)] || []).map(
+            (player: any, index: number) => (
+              <tr
+                key={player.id}
+                className={
+                  index % 2 === 0
+                    ? "bg-slate-900"
+                    : "bg-slate-800/70"
+                }
+              >
+
+                <td className="w-[65%] px-2 sm:px-3 py-2">
+                  <div
+                    className="truncate font-semibold text-xs sm:text-sm"
+                    title={player.fullname}
+                  >
+                    #{player.id}. {player.fullname}
                   </div>
-                )}
+                </td>
+
+                <td className="w-[35%] px-2 sm:px-3 py-2 text-right font-bold text-yellow-400 text-xs sm:text-sm">
+                  {player.bid_amount?.toLocaleString()}
+                </td>
+
+              </tr>
+            )
+          )
+        ) : (
+          <tr>
+            <td
+              colSpan={2}
+              className="py-6 text-center text-slate-400 text-sm"
+            >
+              No players available
+            </td>
+          </tr>
+        )}
+      </tbody>
+
+    </table>
+
+  </div>
+)}
               </div>
             );
           })}
